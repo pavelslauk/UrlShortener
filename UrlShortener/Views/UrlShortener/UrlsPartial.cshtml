@@ -1,0 +1,25 @@
+﻿@model List<UrlShortener.Application.Models.UrlModel>;
+
+@{
+    var newUrlIndex = Model.IndexOf(Model.Single(url => url.Id == null));
+    var scheme = Url.ActionContext.HttpContext.Request.Scheme;
+    var host = Url.ActionContext.HttpContext.Request.Host.Value;
+}
+
+@Html.TextBoxFor(model => Model[newUrlIndex].UserUrl, new { placeholder = "Paste long url and we shorten it" })
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    if (Model[i].Id != null)
+    {
+        @Html.HiddenFor(model => Model[i].Id)
+        @Html.HiddenFor(model => Model[i].UserUrl)
+        @Html.HiddenFor(model => Model[i].ShortedUrl)
+        @Html.HiddenFor(model => Model[i].Clics)
+        <div>@Model[i].UserUrl</div>
+        <a href="@Url.Action("UserShortedUrl", "Home", new { shortedUrlPart = Model[i].ShortedUrl }, scheme, host)">
+            @Url.Action("UserShortedUrl", "Home", new { shortedUrlPart = Model[i].ShortedUrl }, scheme, host)
+        </a>
+        <div>@Model[i].Clics</div>
+    }
+}

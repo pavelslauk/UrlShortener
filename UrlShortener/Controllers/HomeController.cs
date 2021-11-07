@@ -1,26 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using UrlShortener.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using UrlShortener.Application.Interfaces;
 
 namespace UrlShortener.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUrlService _urlService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUrlService urlService)
         {
-            _logger = logger;
+            _urlService = urlService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "UrlShortener");
+        }
+
+        [Route("{shortedUrlPart::maxlength(7)}")]
+        public IActionResult UserShortedUrl(string shortedUrlPart)
+        {
+            if (!_urlService.TryGetUrl(shortedUrlPart, out var url)) return RedirectToAction("Index", "UrlShortener");
+
+            _urlService.UpdateClickedUrl(url);
+
+            return Redirect(url.UserUrl);
         }
     }
 }

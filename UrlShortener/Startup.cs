@@ -1,13 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UrlShortener.Application.Interfaces;
+using UrlShortener.Application.Services;
+using UrlShortener.Application.Utils;
+using UrlShortener.DataAccess;
+using UrlShortener.DataAccess.Repositories;
+using UrlShortener.DomainModel.Entities;
+using UrlShortener.DomainModel.Interfaces;
 
 namespace UrlShortener
 {
@@ -23,7 +27,20 @@ namespace UrlShortener
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<UrlShortenerContext>(options => options.UseSqlServer(connection));
+            services.AddScoped<IContextWorker, UrlShortenerContextWorker>();
+            services.AddScoped<IRepository<Url>, UrlRepository>();
+            services.AddScoped<IUrlService, UrlService>();
             services.AddControllersWithViews();
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMapperConfig());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +53,6 @@ namespace UrlShortener
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -50,7 +66,7 @@ namespace UrlShortener
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }
