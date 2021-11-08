@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UrlShortener.Application.Models;
 using UrlShortener.Application.Interfaces;
+using UrlShortener.Application.Utils.Extensions;
 
 namespace UrlShortener.Controllers
 {
@@ -25,7 +26,7 @@ namespace UrlShortener.Controllers
         {
             var newUserUrl = urls.FirstOrDefault(url => url.Id == null).UserUrl;
 
-            if (!string.IsNullOrWhiteSpace(newUserUrl))
+            if (newUserUrl.IsUrl())
             {
                 _urlService.CreateUrl(newUserUrl);
             }
