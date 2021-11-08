@@ -79,6 +79,7 @@ body {
     padding: 50px;
     margin-top: 5%;
     margin-bottom: 5%;
+    background-color: whitesmoke;
 }
 
 .short-button {
@@ -90,4 +91,25 @@ body {
     border-radius: 20px;
     font-size: 20px;
     font-family: cursive;
+}
+
+.url-input {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 15px;
+    font-family: cursive;
+    font-size: 16px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: antiquewhite;
+}
+
+.url-item {
+    background-color: white;
+    margin-top: 25px;
+    margin-left: 10%;
+    border: solid 2px darkblue;
+    border-radius: 6px;
+    width: 80%;
+    padding: 5px;
 }

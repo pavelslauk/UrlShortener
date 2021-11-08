@@ -29,6 +29,30 @@
           "locations": [
             {
               "resultFile": {
+                "uri": "file:///D:/temp/UrlShortener/UrlShortener/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 67,
+                  "endLine": 33,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
                 "uri": "file:///D:/temp/UrlShortener/UrlShortener/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs",
                 "region": {
                   "startLine": 34,
@@ -77,11 +101,11 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///D:/temp/UrlShortener/UrlShortener/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs",
+                "uri": "file:///D:/temp/UrlShortener/UrlShortener/obj/Debug/netcoreapp3.1/Razor/Views/UrlShortener/UrlsPartial.cshtml.g.cs",
                 "region": {
-                  "startLine": 33,
+                  "startLine": 34,
                   "startColumn": 67,
-                  "endLine": 33,
+                  "endLine": 34,
                   "endColumn": 79
                 }
               }
@@ -227,30 +251,6 @@
                   "startColumn": 217,
                   "endLine": 172,
                   "endColumn": 219
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS1998",
-          "level": "warning",
-          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
-          "suppressionStates": [
-            "suppressedInSource"
-          ],
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///D:/temp/UrlShortener/UrlShortener/obj/Debug/netcoreapp3.1/Razor/Views/UrlShortener/UrlsPartial.cshtml.g.cs",
-                "region": {
-                  "startLine": 34,
-                  "startColumn": 67,
-                  "endLine": 34,
-                  "endColumn": 79
                 }
               }
             }
