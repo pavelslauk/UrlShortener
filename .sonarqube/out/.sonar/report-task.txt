@@ -1,6 +1,0 @@
-projectKey=UrlShortener
-serverUrl=http://localhost:9000
-serverVersion=9.1.0.47736
-dashboardUrl=http://localhost:9000/dashboard?id=UrlShortener
-ceTaskId=AXz8voKVoT5MRldp0cAM
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXz8voKVoT5MRldp0cAM

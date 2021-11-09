@@ -1,3 +1,0 @@
-﻿D:\temp\UrlShortener\UrlShortener.DomainModel\Entities\UrlEntity.cs
-D:\temp\UrlShortener\UrlShortener.DomainModel\Interfaces\IContextWorker.cs
-D:\temp\UrlShortener\UrlShortener.DomainModel\Interfaces\IRepository.cs
